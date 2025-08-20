@@ -4,18 +4,12 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
-        if numRows==0:
-            return []
-        if numRows==1:
-            return [[1]]
-        prevs=self.generate(numRows-1)
-        prev=prevs[-1]
-        currRow=[1]
-        for i in range(1,numRows-1):
-            currRow.append(prev[i-1]+prev[i])
-        currRow.append(1)
-        prevs.append(currRow)
-        return prevs
-        
-        
+        ans=[[1]]
+        for i in range(numRows-1):
+            temp=[0]+ans[-1]+[0]
+            rows=[]
+            for j in range(len(ans[-1])+1):
+                rows.append(temp[j]+temp[j+1])
+            ans.append(rows)
+        return ans
         
