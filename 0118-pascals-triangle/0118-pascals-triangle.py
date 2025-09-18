@@ -11,5 +11,5 @@ class Solution(object):
             for j in range(len(ans[-1])+1):
                 rows.append(temp[j]+temp[j+1])
             ans.append(rows)
-        return ans
+        return ans        
         
