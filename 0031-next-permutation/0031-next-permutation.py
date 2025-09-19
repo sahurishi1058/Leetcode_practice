@@ -4,18 +4,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        i=len(nums)-2
-        while i>=0 and nums[i]>=nums[i+1]:
-            i-=1
-        if i>=0:
-            j=len(nums)-1
-            while nums[j]<=nums[i]:
-                j-=1
-            nums[i],nums[j]=nums[j],nums[i]
-        left,right=i+1,len(nums)-1
-        while left<right:
-            nums[left],nums[right]=nums[right],nums[left]
-            left+=1
-            right-=1
-
+        index=-1
+        n=len(nums)
+        for i in  range(n-2,-1,-1):
+            if nums[i]<nums[i+1]:
+                index=i
+                break
+        if index==-1:
+            nums.reverse()
+            return
+        for i in range(n-1,index,-1):
+            if nums[i]>nums[index]:
+                nums[i],nums[index]=nums[index],nums[i]
+                break
+        nums[index+1:n]=reversed(nums[index+1:n])
         
