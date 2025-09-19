@@ -4,18 +4,9 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        n=len(matrix)
-        for i in range(n):
+        n=len(matrix)# rows and columns are same( n x n )
+        for i in range(0,n):
             for j in range(i+1,n):
-                temp=matrix[i][j]
-                matrix[i][j]=matrix[j][i]
-                matrix[j][i]=temp
-        for j in range(n):
-            k=n-1
-            i=0
-            while i<k:
-                temp=matrix[j][i]
-                matrix[j][i]=matrix[j][k]
-                matrix[j][k]=temp
-                i+=1
-                k-=1
+                matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+        for i in range(n):
+            matrix[i].reverse()
