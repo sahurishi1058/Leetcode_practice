@@ -5,8 +5,20 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        nums=[x for i in matrix for x in i]
-        if target in nums:
-            return True 
-        else:
+        lst=list([x for num in matrix for x in num])
+        n=len(lst)
+        def binary_search(lst,n,target):
+            l=0
+            h=n-1
+            while l<=h:
+                mid=(l+h)//2
+                if target==lst[mid]:
+                    return True
+                elif target<lst[mid]:
+                    h=mid-1
+                else:
+                    l=mid+1
             return False
+        return binary_search(lst,n,target)
+            
+
