@@ -4,17 +4,14 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        if len(intervals)<1:
-            return intervals
-        intervals.sort(key=lambda x: x[0])  # Step 1
-        merged = [intervals[0]]             # Step 2
-
-        for current in intervals[1:]:       # Step 3
-            last = merged[-1]
-            if current[0] <= last[1]:       # Overlap
-                last[1] = max(last[1], current[1])
+        intervals.sort()
+        merged=[]
+        for i in intervals:
+            if not merged or merged[-1][1]<i[0]:
+                merged.append(i)
             else:
-                merged.append(current)
+                merged[-1][1]=max(merged[-1][1],i[1])
 
         return merged
 
+        
