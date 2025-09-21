@@ -5,18 +5,17 @@ class Solution(object):
         :rtype: List[int]
         """
         n=len(grid)
-        rep=-1
-        miss=-1
-        currsum=0
-        totalsum=((n*n)*((n*n)+1))//2
+        nums=n**2
+        count=[0]*(nums+1)
         for i in range(n):
             for j in range(n):
-                val=abs(grid[i][j])
-                row,col=divmod(val-1,n)
-                if grid[row][col]<0:
-                    rep=val
-                grid[row][col]*=-1
-                currsum+=val
-        miss=totalsum-(currsum-rep)
-        return [rep,miss]
-        
+                count[grid[i][j]]+=1
+        a,b=-1,-1
+        for i in range(1,nums+1):
+            if count[i]==2:
+                a=i
+            if count[i]==0:
+                b=i
+
+        return [a,b]        
+            
