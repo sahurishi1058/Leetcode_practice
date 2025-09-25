@@ -4,8 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        maj_ele=-1
+        n=len(nums)
         count=0
+        maj_ele=nums[0]
         for i in nums:
             if count==0:
                 maj_ele=i
