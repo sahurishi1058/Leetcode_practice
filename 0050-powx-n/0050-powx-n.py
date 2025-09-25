@@ -9,12 +9,7 @@ class Solution(object):
             return 1
         elif n<0:
             x=1/x
-            n=-n
-        pow_val=1
-        while n:
-            if n%2==1:
-                pow_val*=x
-            x*=x
-            n//=2
-        return pow_val
-        
+            n=abs(n)
+            return x**n
+        else:
+            return x**n
