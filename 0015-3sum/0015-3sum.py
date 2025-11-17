@@ -4,16 +4,28 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        n=len(nums)
+        nums.sort()
         ans=[]
-        for i in range(0,len(nums)):
-            for j in range(i+1,len(nums)):
-                for k in range(j+1,len(nums)):
-                    if i!=j and i!=k and j!=k:
-                        sum_tar=nums[i]+nums[j]+nums[k]
-                        if sum_tar==0:
-                            pair=sorted([nums[i],nums[j],nums[k]])
-                            if pair not in ans:
-                                ans.append(pair)
-                        
+        for i in range(n):
+            target=0-nums[i]
+            start=i+1
+            end=n-1
+            if i>0 and nums[i]==nums[i-1]:
+                continue
+            while start<end:
+                currsum=nums[start]+nums[end]
+                if currsum==target:
+                    ans.append([nums[i],nums[start],nums[end]])
+                    start+=1
+                    end-=1
+                    while start<end and nums[start]==nums[start-1]:
+                        start+=1
+                    while start<end and nums[end]==nums[end+1]:
+                        end-=1
+                elif currsum<target:
+                    start+=1
+                else:
+                    end-=1
         return ans
 
