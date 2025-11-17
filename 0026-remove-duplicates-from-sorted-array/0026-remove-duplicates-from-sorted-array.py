@@ -4,7 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        l1=set(nums)
-        nums[:]=sorted(list(l1))
+        l=set(nums)
+        nums[:]=sorted(list(l))
         j=len(nums)
         return j
