@@ -7,17 +7,21 @@ class Solution(object):
         row=len(matrix)
         col=len(matrix[0])
         row_zeros=[]
-        col_zeroes=[]
-        for i in range(row) :
-            for j in range(col):
-                if matrix[i][j]==0 :
-                    if i not in row_zeros:
+        col_zeros=[]
+        for i in range(0,row):
+            for j in range(0,col):
+                if matrix[i][j]==0:
+                    if i not in row_zeros: 
                         row_zeros.append(i)
-                    if  j not in col_zeroes:
-                        col_zeroes.append(j)
-        for j in range(col):
-                for a in row_zeros:
-                    matrix[a][j]=0
-        for i in range(row) :
-                for b in col_zeroes:
-                    matrix[i][b]=0
+                    if j not in col_zeros:
+                        col_zeros.append(j)
+                else:
+                    continue
+        for i in col_zeros:
+            for j in range(row):
+                matrix[j][i]=0
+        for i in row_zeros:
+            for j in range(col):
+                matrix[i][j]=0
+
+        
